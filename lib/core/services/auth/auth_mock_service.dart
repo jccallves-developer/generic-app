@@ -4,6 +4,8 @@ import 'dart:math';
 
 import 'package:chat/core/models/chat_user.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class AuthMockService implements AuthService {
   static const _defaultUser = ChatUser(
@@ -64,5 +66,19 @@ class AuthMockService implements AuthService {
   static void _updateUser(ChatUser? user) {
     _currentUser = user;
     _controller?.add(_currentUser);
+  }
+
+  @override
+  Future<User?> signInWithGoogle({required BuildContext context}) {
+    // ignore: todo
+    // TODO: implement signInWithGoogle
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> signOut({required BuildContext context}) {
+    // ignore: todo
+    // TODO: implement signOut
+    throw UnimplementedError();
   }
 }

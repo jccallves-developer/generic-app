@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:chat/components/user_image_picker.dart';
 import 'package:chat/core/models/auth_form_data.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AuthForm extends StatefulWidget {
   final void Function(AuthFormData) onSubmit;
@@ -115,6 +117,23 @@ class _AuthFormState extends State<AuthForm> {
                     _formData.toggleAuthMode();
                   });
                 },
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    AuthService().signInWithGoogle(context: context);
+                  },
+                  icon: const Padding(
+                    padding: EdgeInsets.all(5.0),
+                    child: Icon(FontAwesomeIcons.google),
+                  ),
+                  label: const Text('Entrar com Google'),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.grey[700]),
+                  ),
+                ),
               ),
             ],
           ),
